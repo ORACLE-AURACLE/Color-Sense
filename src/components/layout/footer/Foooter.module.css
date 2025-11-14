@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&display=swap");
+
+.footer {
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #f9fafb 50%,
+    #ffffff 100%
+  );
+  padding: 60px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Logo + Text */
+.logo_container {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer_logo {
+  height: 60px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+.logo_container p {
+  color: #6b7280;
+  font-size: 15px;
+}
+
+/* Links Sections */
+.footer_links,
+.social_links {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer_links h3,
+.social_links h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 15px;
+}
+
+.footer_link {
+  display: block;
+  text-decoration: none;
+  font-size: 15px;
+  color: #4b5563;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.footer_link:hover {
+  color: #00c4ff; /* Polkadot bright cyan touch */
+}
+
+/* Bottom Text */
+.all_rights_reserved {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.all_rights_reserved p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .footer_links,
+  .social_links {
+    text-align: center;
+  }
+}

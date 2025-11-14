@@ -1,0 +1,175 @@
+/* Base styles — 1440px and above */
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 50px;
+  width: 250px;
+}
+
+.navbar_links {
+  display: flex;
+  gap: 50px;
+}
+
+.navbar_link {
+  text-decoration: none;
+  color: #333333;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.navbar_link:hover {
+  text-decoration: underline 4px solid #00f3ff;
+  text-underline-offset: 25px;
+}
+
+.auth_buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.login_button {
+  height: 50px;
+  width: 100px;
+  cursor: pointer;
+}
+
+.wallet_connect {
+  height: 50px;
+  width: 160px;
+  cursor: pointer;
+}
+@media (max-width: 1200px) {
+  .navbar {
+    padding: 10px 60px;
+  }
+
+  .logo {
+    width: 200px;
+    height: 45px;
+  }
+
+  .navbar_links {
+    gap: 35px;
+  }
+
+  .navbar_link {
+    font-size: 15px;
+  }
+
+  .hero_section {
+    height: 450px;
+    padding: 70px 60px;
+  }
+}
+/* Tablets (max-width: 992px) */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 10px 40px;
+  }
+
+  .logo {
+    width: 180px;
+    height: 40px;
+  }
+
+  .navbar_links {
+    gap: 25px;
+  }
+
+  .navbar_link {
+    font-size: 14px;
+  }
+
+  .auth_buttons {
+    gap: 8px;
+  }
+
+  .login_button {
+    width: 90px;
+    height: 45px;
+  }
+
+  .wallet_connect {
+    width: 140px;
+    height: 45px;
+  }
+
+  .hero_section {
+    height: 400px;
+    padding: 60px 40px;
+  }
+}
+
+/* Mobile landscape / large phones (max-width: 768px) */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 30px;
+    gap: 15px;
+  }
+
+  .navbar_links {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .logo {
+    width: 160px;
+    height: 35px;
+  }
+
+  .navbar_link {
+    font-size: 13px;
+  }
+
+  .hero_section {
+    height: auto;
+    padding: 50px 30px;
+  }
+}
+
+/* Small phones (max-width: 480px) */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 10px 20px;
+  }
+
+  .logo {
+    width: 130px;
+    height: 30px;
+  }
+
+  .navbar_links {
+    display: none; /* optional – use a burger menu instead */
+  }
+
+  .auth_buttons {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .login_button,
+  .wallet_connect {
+    width: 45%;
+    height: 40px;
+  }
+
+  .hero_section {
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .lil_view_guide {
+    width: 80px;
+    height: 25px;
+  }
+}
