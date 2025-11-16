@@ -42,15 +42,15 @@ export default function ColorInput({ label, value, onChange, onSwap }) {
   };
 
   return (
-    <div className="space-y-2">
-      <label className="text-sm font-medium">{label}</label>
-      <div className="flex items-center gap-3">
-        <div className="relative">
+    <div className="space-y-1.5 sm:space-y-2">
+      <label className="text-xs sm:text-sm font-medium">{label}</label>
+      <div className="flex items-center gap-2 sm:gap-3">
+        <div className="relative shrink-0">
           <input
             type="color"
             value={hexValue}
             onChange={handleColorPickerChange}
-            className="w-12 h-12 rounded-md border-2 border-border cursor-pointer"
+            className="w-10 h-10 sm:w-12 sm:h-12 rounded-md border-2 border-border cursor-pointer"
             title="Pick a color"
           />
         </div>
@@ -60,17 +60,17 @@ export default function ColorInput({ label, value, onChange, onSwap }) {
           value={hexValue}
           onChange={handleHexChange}
           placeholder="#000000"
-          className="flex-1 font-mono"
+          className="flex-1 font-mono text-sm sm:text-base"
           maxLength={7}
         />
         {onSwap && (
           <button
             type="button"
             onClick={onSwap}
-            className="p-2 rounded-md border hover:bg-accent transition-colors shrink-0"
+            className="p-1.5 sm:p-2 rounded-md border hover:bg-accent transition-colors shrink-0"
             title="Swap colors"
           >
-            <ArrowLeftRight className="size-4" />
+            <ArrowLeftRight className="size-3.5 sm:size-4" />
           </button>
         )}
       </div>

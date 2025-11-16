@@ -146,14 +146,14 @@ export default function SimulatorControls({
   };
 
   return (
-    <Card className="rounded-3xl">
-      <CardContent className="space-y-6 py-6">
-        <CardTitle>Controls</CardTitle>
+    <Card className="rounded-2xl sm:rounded-3xl">
+      <CardContent className="space-y-4 sm:space-y-6 py-4 sm:py-6 px-4 sm:px-6">
+        <CardTitle className="text-base sm:text-lg">Controls</CardTitle>
 
-        <div className="space-y-3">
+        <div className="space-y-2 sm:space-y-3">
           <Button
             variant="outline"
-            className="w-full justify-start"
+            className="w-full justify-start text-sm sm:text-base"
             onClick={() => {
               const input = document.createElement("input");
               input.type = "file";
@@ -168,7 +168,7 @@ export default function SimulatorControls({
 
           <Button
             variant="outline"
-            className="w-full justify-start"
+            className="w-full justify-start text-sm sm:text-base"
             onClick={handleCameraClick}
           >
             <Camera className="size-4" />
@@ -177,7 +177,7 @@ export default function SimulatorControls({
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-medium">Vision Mode</label>
+          <label className="text-xs sm:text-sm font-medium">Vision Mode</label>
           <Select
             value={selectedVisionMode || "normal"}
             onValueChange={onVisionModeChange}
@@ -190,10 +190,10 @@ export default function SimulatorControls({
           </Select>
         </div>
 
-        <div className="space-y-3 pt-2">
+        <div className="space-y-2 sm:space-y-3 pt-2">
           <Button
             variant="default"
-            className="w-full"
+            className="w-full text-sm sm:text-base"
             onClick={onSaveImage}
             disabled={!imageUrl}
           >
@@ -203,7 +203,7 @@ export default function SimulatorControls({
 
           <Button
             variant="outline"
-            className="w-full"
+            className="w-full text-sm sm:text-base"
             onClick={onShare}
             disabled={!imageUrl}
           >
@@ -213,15 +213,15 @@ export default function SimulatorControls({
         </div>
 
         {selectedMode && (
-          <div className="w-full max-h-96 overflow-y-auto overflow-x-hidden cyan-gradient rounded-lg p-4 space-y-3 scrollbar-thin">
-            <h3 className="font-semibold text-base">About {selectedMode.label}</h3>
+          <div className="w-full max-h-64 sm:max-h-96 overflow-y-auto overflow-x-hidden cyan-gradient rounded-lg p-3 sm:p-4 space-y-2 sm:space-y-3">
+            <h3 className="font-semibold text-sm sm:text-base">About {selectedMode.label}</h3>
             {loadingInfo ? (
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Loader2 className="size-4 animate-spin" />
+              <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+                <Loader2 className="size-3.5 sm:size-4 animate-spin" />
                 <span>Loading information...</span>
               </div>
             ) : (
-              <div className="text-sm text-muted-foreground leading-relaxed">
+              <div className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                 {formatTextContent(visionInfo || selectedMode.description)}
               </div>
             )}

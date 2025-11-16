@@ -109,21 +109,21 @@ export default function AccessibilityChecker() {
   };
 
   return (
-    <div className="w-full space-y-6">
+    <div className="w-full space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Contrast Checker</h1>
-        <p className="text-muted-foreground">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">Contrast Checker</h1>
+        <p className="text-sm sm:text-base text-muted-foreground">
           Evaluate color contrast for accessibility compliance and see how colors appear with different vision types.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 space-y-6">
-          <Card className="rounded-3xl">
-            <CardContent className="space-y-6 py-6">
-              <CardTitle>Contrast Checker</CardTitle>
+      <div className="flex flex-col lg:grid lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="w-full lg:col-span-2 space-y-4 sm:space-y-6 order-1">
+          <Card className="rounded-2xl sm:rounded-3xl">
+            <CardContent className="space-y-4 sm:space-y-6 py-4 sm:py-6 px-4 sm:px-6">
+              <CardTitle className="text-base sm:text-lg">Contrast Checker</CardTitle>
               
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <ColorInput
                   label="Foreground (Text)"
                   value={foregroundColor}
@@ -155,7 +155,7 @@ export default function AccessibilityChecker() {
           {compliance && <WCAGCompliance compliance={compliance} />}
         </div>
 
-        <div className="lg:col-span-1">
+        <div className="w-full lg:col-span-1 order-2">
           <AccessibilityControls
             foregroundColor={foregroundColor}
             backgroundColor={backgroundColor}

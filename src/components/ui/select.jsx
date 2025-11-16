@@ -35,7 +35,7 @@ function Select({
         type="button"
         onClick={() => setOpen(!open)}
         className={cn(
-          "w-full flex items-center justify-between gap-2 px-3 py-2 rounded-md border bg-background text-sm",
+          "w-full flex items-center justify-between gap-2 px-3 py-2 rounded-md border bg-background text-xs sm:text-sm",
           "hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
         )}
         {...props}
@@ -45,7 +45,7 @@ function Select({
       </button>
       
       {open && (
-        <div className="absolute z-50 w-full mt-1 bg-popover border rounded-md shadow-md max-h-60 overflow-auto">
+        <div className="absolute z-50 w-full mt-1 bg-popover border rounded-md shadow-md max-h-48 sm:max-h-60 overflow-auto">
           {React.Children.map(children, (child) =>
             React.cloneElement(child, {
               onClick: () => {
@@ -66,7 +66,7 @@ function SelectItem({ value, children, onClick, className, ...props }) {
       type="button"
       onClick={onClick}
       className={cn(
-        "w-full text-left px-3 py-2 text-sm hover:bg-accent focus:bg-accent focus:outline-none",
+        "w-full text-left px-3 py-2 text-xs sm:text-sm hover:bg-accent focus:bg-accent focus:outline-none",
         className
       )}
       {...props}
