@@ -9,7 +9,12 @@ import { usePathname } from "next/navigation";
 export default function AppSidebar({ open, onClose }) {
   const pathname = usePathname();
 
-  const isActive = (path) => pathname.startsWith(path);
+  const isActive = (path) => {
+    if (path === "/app") {
+      return pathname === "/app";
+    }
+    return pathname.startsWith(path);
+  };
 
   const handleMenuClick = () => {
     localStorage.setItem("menuOpen", "false");
@@ -45,10 +50,7 @@ export default function AppSidebar({ open, onClose }) {
             key={idx}
             href={item?.link}
             className={`w-full flex items-center gap-6 text-base rounded-md hover:text-primary ${
-              (item?.link === "/app" && pathname === "/app") ||
-              (item?.link !== "/app" && pathname.startsWith(item?.link + "/"))
-                ? "bg-accent"
-                : ""
+              isActive(item?.link) ? "bg-accent" : ""
             }
             ${open ? "px-3 py-4" : "px-2 py-2"}
             `}
