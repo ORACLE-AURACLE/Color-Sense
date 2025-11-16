@@ -16,12 +16,12 @@ import LearnAndEarn from "../asset/learnandcontribute.png";
 import EarnColorTokens from "../asset/earncolortokens.png";
 import ClaimYourImpact from "../asset/claimimpact.png";
 import Image from "next/image";
-import NavBarComponent from "../layout/navbar/Navbar";
+import NavBarComponent from "../../layout/navbar/Navbar";
 import Claimyourtoken from "../asset/claimyourtokenbtn.png";
 import SimulatorUpload from "../asset/uploadimage.png";
 import UplaodImageButton from "../asset/uploadbtn.png";
 import WhiteCurvyWalletConnect from "../asset/whitecurvywalletconnect.png";
-import FooterComponent from "../layout/footer/Footer";
+import FooterComponent from "../../layout/footer/Footer";
 import StartLearning from "../asset/startlearningbtn.png";
 
 const LandingPageComponent = () => {
