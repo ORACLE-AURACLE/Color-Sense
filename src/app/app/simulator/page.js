@@ -1,7 +1,9 @@
-import React from 'react'
+import Simulator from "@/components/app/simulator";
 
 export default function SimulatorPage() {
   return (
-    <div>SimulatorPage</div>
+    <main>
+      <Simulator />
+    </main>
   )
 }
