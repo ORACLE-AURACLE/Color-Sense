@@ -1,5 +1,5 @@
 import styles from "./Foooter.module.css";
-import Logo from "../../asset/logo.png";
+import Logo from "@/components/asset/logo.png";
 import Image from "next/image";
 
 const FooterComponent = () => {

@@ -1,8 +1,8 @@
 import styles from "./Navbar.module.css";
 import Image from "next/image";
-import Logo from "../../asset/logo.png";
-import WalletConnect from "../../asset/walletconnect.png";
-import LoginButton from "../../asset/loginbutton.png";
+import Logo from "@/components/asset/logo.png";
+import WalletConnect from "@/components/asset/walletconnect.png";
+import LoginButton from "@/components/asset/loginbutton.png";
 
 const NavBarComponent = () => {
     return (
