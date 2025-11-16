@@ -13,23 +13,23 @@ export default function LivePreview({ foregroundColor, backgroundColor, visionMo
     : backgroundColor;
 
   return (
-    <Card className="rounded-3xl">
-      <CardContent className="space-y-4 py-6">
-        <CardTitle>Live Preview</CardTitle>
+    <Card className="rounded-2xl sm:rounded-3xl">
+      <CardContent className="space-y-3 sm:space-y-4 py-4 sm:py-6 px-4 sm:px-6">
+        <CardTitle className="text-base sm:text-lg">Live Preview</CardTitle>
         
         <div 
-          className="rounded-lg p-6 space-y-4"
+          className="rounded-lg p-4 sm:p-6 space-y-3 sm:space-y-4"
           style={{ backgroundColor: transformedBackground }}
         >
           <h2 
-            className="text-2xl font-bold"
+            className="text-xl sm:text-2xl font-bold"
             style={{ color: transformedForeground }}
           >
             Sample Heading
           </h2>
           
           <p 
-            className="text-base leading-relaxed"
+            className="text-sm sm:text-base leading-relaxed"
             style={{ color: transformedForeground }}
           >
             This is how your text will appear with the selected color combination. 
@@ -41,7 +41,7 @@ export default function LivePreview({ foregroundColor, backgroundColor, visionMo
               backgroundColor: transformedForeground,
               color: transformedBackground
             }}
-            className="mt-4"
+            className="mt-2 sm:mt-4 text-sm sm:text-base w-full sm:w-auto"
           >
             Button Text
           </Button>

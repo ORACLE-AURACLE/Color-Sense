@@ -157,13 +157,13 @@ export default function AccessibilityControls({
   };
 
   return (
-    <div className="space-y-6">
-      <Card className="rounded-3xl">
-        <CardContent className="space-y-6 py-6">
-          <CardTitle>Controls</CardTitle>
+    <div className="space-y-4 sm:space-y-6">
+      <Card className="rounded-2xl sm:rounded-3xl">
+        <CardContent className="space-y-4 sm:space-y-6 py-4 sm:py-6 px-4 sm:px-6">
+          <CardTitle className="text-base sm:text-lg">Controls</CardTitle>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">Vision Mode</label>
+            <label className="text-xs sm:text-sm font-medium">Vision Mode</label>
             <Select
               value={selectedVisionMode || "normal"}
               onValueChange={onVisionModeChange}
@@ -176,10 +176,10 @@ export default function AccessibilityControls({
             </Select>
           </div>
 
-          <div className="space-y-3 pt-2">
+          <div className="space-y-2 sm:space-y-3 pt-2">
             <Button
               variant="default"
-              className="w-full"
+              className="w-full text-sm sm:text-base"
               onClick={onSaveReport}
             >
               <Download className="size-4" />
@@ -188,7 +188,7 @@ export default function AccessibilityControls({
 
             <Button
               variant="outline"
-              className="w-full"
+              className="w-full text-sm sm:text-base"
               onClick={onShare}
             >
               <Share2 className="size-4" />
@@ -199,9 +199,9 @@ export default function AccessibilityControls({
       </Card>
 
       {selectedMode && (
-        <Card className="rounded-3xl h-full max-h-96 overflow-y-auto">
-          <CardContent className="space-y-4 py-6">
-            <CardTitle>About {selectedMode.label}</CardTitle>
+        <Card className="rounded-2xl sm:rounded-3xl h-full max-h-64 sm:max-h-96 overflow-y-auto">
+          <CardContent className="space-y-3 sm:space-y-4 py-4 sm:py-6 px-4 sm:px-6">
+            <CardTitle className="text-base sm:text-lg">About {selectedMode.label}</CardTitle>
             {loadingInfo ? (
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Loader2 className="size-4 animate-spin" />
@@ -217,16 +217,16 @@ export default function AccessibilityControls({
       )}
 
       {guidance && (
-        <Card className="rounded-3xl">
-          <CardContent className="space-y-4 py-6">
-            <CardTitle>Color Guidance</CardTitle>
+        <Card className="rounded-2xl sm:rounded-3xl">
+          <CardContent className="space-y-3 sm:space-y-4 py-4 sm:py-6 px-4 sm:px-6">
+            <CardTitle className="text-base sm:text-lg">Color Guidance</CardTitle>
             {loadingGuidance ? (
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Loader2 className="size-4 animate-spin" />
+              <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+                <Loader2 className="size-3.5 sm:size-4 animate-spin" />
                 <span>Loading guidance...</span>
               </div>
             ) : (
-              <div className="text-sm text-muted-foreground leading-relaxed max-h-96 overflow-y-auto">
+              <div className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-h-64 sm:max-h-96 overflow-y-auto">
                 {formatTextContent(guidance)}
               </div>
             )}
@@ -234,20 +234,20 @@ export default function AccessibilityControls({
         </Card>
       )}
 
-      <Card className="rounded-3xl">
-        <CardContent className="space-y-4 py-6">
-          <CardTitle>Quick Tips</CardTitle>
-          <ul className="space-y-2 text-sm text-muted-foreground">
+      <Card className="rounded-2xl sm:rounded-3xl">
+        <CardContent className="space-y-3 sm:space-y-4 py-4 sm:py-6 px-4 sm:px-6">
+          <CardTitle className="text-base sm:text-lg">Quick Tips</CardTitle>
+          <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
             <li className="flex items-start gap-2">
-              <span className="mt-1">•</span>
+              <span className="mt-0.5 sm:mt-1 shrink-0">•</span>
               <span>Aim for 4.5:1 minimum contrast ratio</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="mt-1">•</span>
+              <span className="mt-0.5 sm:mt-1 shrink-0">•</span>
               <span>Use high contrast for better readability</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="mt-1">•</span>
+              <span className="mt-0.5 sm:mt-1 shrink-0">•</span>
               <span>Test with different color blindness types</span>
             </li>
           </ul>
