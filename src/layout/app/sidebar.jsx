@@ -17,7 +17,9 @@ export default function AppSidebar({ open, onClose }) {
   };
 
   const handleMenuClick = () => {
-    localStorage.setItem("menuOpen", "false");
+    if (typeof window !== 'undefined') {
+      localStorage.setItem("menuOpen", "false");
+    }
     onClose?.();
   }
   return (

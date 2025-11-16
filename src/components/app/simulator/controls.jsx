@@ -1,12 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Upload, Camera, Download, Share2, Loader2 } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Select, SelectItem } from "@/components/ui/select";
 import { vision_modes } from "./_data";
 import { getVisionModeInfo } from "@/lib/services/groq";
 import { formatVisionInfo } from "@/lib/utils/formatVisionInfo";
+import { parseAPIError } from "@/lib/utils/errorHandler";
 
 export default function SimulatorControls({
   onImageUpload,
@@ -36,8 +38,19 @@ export default function SimulatorControls({
       setVisionInfo(formattedInfo);
     } catch (error) {
       console.error("Failed to load vision info:", error);
+      const errorInfo = parseAPIError(error);
       const mode = vision_modes.find(m => m.id === modeId);
+      
+      // Fallback to default description
       setVisionInfo(mode?.description || "Information unavailable.");
+      
+      // Don't show toast for config errors (user might not have API set up)
+      if (errorInfo.type !== "CONFIG_ERROR") {
+        toast.error("Failed to load vision information", {
+          description: errorInfo.message,
+          duration: 5000,
+        });
+      }
     } finally {
       setLoadingInfo(false);
     }
@@ -68,7 +81,10 @@ export default function SimulatorControls({
       stream.getTracks().forEach(track => track.stop());
     } catch (error) {
       console.error("Camera access denied:", error);
-      alert("Camera access is required. Please allow camera permissions.");
+      toast.error("Camera access denied", {
+        description: "Please allow camera permissions to use this feature.",
+        duration: 5000,
+      });
     }
   };
 

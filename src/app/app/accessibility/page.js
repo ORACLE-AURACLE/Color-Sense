@@ -1,7 +1,9 @@
-import React from 'react'
+import AccessibilityChecker from "@/components/app/accessibility";
 
 export default function AccessibilityPage() {
   return (
-    <div>AccessibilityPage</div>
+    <main className="">
+      <AccessibilityChecker />
+    </main>
   )
 }

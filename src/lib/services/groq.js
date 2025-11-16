@@ -1,3 +1,5 @@
+import { APIError, checkAPICredentials, handleAPIResponse, fetchWithTimeout } from "@/lib/utils/errorHandler";
+
 const API_URL = process.env.NEXT_PUBLIC_GROQ_API_URL
 const API_KEY = process.env.NEXT_PUBLIC_GROQ_API_KEY
 
@@ -16,8 +18,14 @@ const getApiUrl = () => {
 };
 
 export const getVisionModeInfo = async (visionModeId) => {
+  // Check API credentials
+  const credentialsCheck = checkAPICredentials();
+  if (!credentialsCheck.configured) {
+    throw new APIError(credentialsCheck.message, 0, "CONFIG_ERROR");
+  }
+
   if (!API_URL || !API_KEY) {
-    throw new Error("Groq API credentials not configured. Please set NEXT_PUBLIC_GROQ_API_URL and NEXT_PUBLIC_GROQ_API_KEY environment variables.");
+    throw new APIError("Groq API credentials not configured. Please set NEXT_PUBLIC_GROQ_API_URL and NEXT_PUBLIC_GROQ_API_KEY environment variables.", 0, "CONFIG_ERROR");
   }
 
   const visionModeMap = {
@@ -44,39 +52,52 @@ Provide a comprehensive, educational explanation that helps people understand th
 
   try {
     const baseApiUrl = getApiUrl();
-    const response = await fetch(`${baseApiUrl}/chat/completions`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${API_KEY}`
-      },
-      body: JSON.stringify({
-        model: "meta-llama/llama-4-maverick-17b-128e-instruct",
-        messages: [
-          {
-            role: "system",
-            content: "You are a helpful assistant that provides educational information about color vision deficiencies and color blindness."
-          },
-          {
-            role: "user",
-            content: prompt
-          }
-        ],
-        temperature: 0.7,
-        max_tokens: 3000
-      })
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.error?.message || `API request failed with status ${response.status}`);
+    if (!baseApiUrl) {
+      throw new APIError("Invalid API URL configuration.", 0, "CONFIG_ERROR");
     }
 
-    const data = await response.json();
-    return data.choices[0]?.message?.content || "Unable to retrieve information about this vision mode.";
+    const response = await fetchWithTimeout(
+      `${baseApiUrl}/chat/completions`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${API_KEY}`
+        },
+        body: JSON.stringify({
+          model: "llama-3.1-8b-instant",
+          messages: [
+            {
+              role: "system",
+              content: "You are a helpful assistant that provides educational information about color vision deficiencies and color blindness."
+            },
+            {
+              role: "user",
+              content: prompt
+            }
+          ],
+          temperature: 0.7,
+          max_tokens: 3000
+        })
+      },
+      30000 // 30 second timeout
+    );
+
+    const validResponse = await handleAPIResponse(response);
+    const data = await validResponse.json();
+    
+    if (!data.choices || !data.choices[0]?.message?.content) {
+      throw new APIError("Invalid response format from API.", 500, "INVALID_RESPONSE");
+    }
+
+    return data.choices[0].message.content;
   } catch (error) {
+    // Re-throw APIError as-is, wrap others
+    if (error instanceof APIError) {
+      throw error;
+    }
     console.error("Groq API error:", error);
-    throw error;
+    throw new APIError(error.message || "Failed to retrieve vision mode information.", 0, "UNKNOWN_ERROR");
   }
 };
 
