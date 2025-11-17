@@ -54,7 +54,6 @@
 }
 
 /* --------ABOUT SECTION------------------- */
-
 .about_section {
   min-height: 700px;
   background-color: #f9fafb;
@@ -115,7 +114,7 @@
 }
 
 .image_comparison_item {
-  height: 250px;
+  height: 300px;
   width: 300px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -138,7 +137,6 @@
 }
 
 /* --------FEATURES SECTION------------------- */
-
 .features_section {
   padding: 80px 100px;
   margin: 10px 80px;
@@ -219,16 +217,11 @@
 }
 
 /* Polkadot inclusive design section */
-
 .polkadot_inclusive_conatainer {
   margin-top: 50px;
   min-height: 1100px;
   width: 100% !important;
-  background: linear-gradient(
-    90deg,
-    #FFFFFF 0%, 
-    #F9FAFB 100%
-  );
+  background: linear-gradient(90deg, #FFFFFF 0%, #F9FAFB 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -306,62 +299,11 @@
   padding: 0 20px;
 }
 
-/* --------CONTRIBUTE & EARN SECTION------------------- */
+/* --------------------------- */
+/* CONTRIBUTE & EARN SECTION   */
+/* --------------------------- */
 
-.contribute_and_earn_section {
-  min-height: 800px;
-  padding: 50px 80px;
-}
 
-.contribute_and_earn_section h1 {
-  text-align: center;
-  font-size: 48px;
-  font-weight: 400;
-  color: #111827;
-  font-family: "Sora", sans-serif;
-  line-height: 1.2;
-  padding: 0 20px;
-}
-
-.contribute_and_earn_section p {
-  max-width: 720px;
-  margin: 0 auto;
-  margin-top: 30px;
-  text-align: center;
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  color: #6b7280;
-  line-height: 1.6;
-  padding: 0 20px;
-}
-
-.contribute_and_earn_steps_container {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 50px;
-  flex-wrap: wrap;
-  padding: 0 20px;
-}
-
-.contribute_and_earn_step_item {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  border-radius: 8px;
-  flex-shrink: 0;
-}
-
-.contribute_and_earn_step_item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-}
-
-.contribute_and_earn_step_item img {
-  max-width: 100%;
-  height: auto;
-}
 
 .contribute_and_earn_final_image_container {
   display: flex;
@@ -371,6 +313,17 @@
   padding: 0 20px;
 }
 
+.contribute_and_earn_final_image_container p {
+  max-width: 850px;
+  margin: 20px auto 0;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
 .claim_your_token_btn {
   height: 60px;
   width: 250px;
@@ -378,421 +331,45 @@
   cursor: pointer;
 }
 
-.contribute_and_earn_final_image_container p {
-  max-width: 850px;
-  margin: 0 auto;
-  margin-top: 20px;
-  text-align: center;
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  color: #6b7280;
-  line-height: 1.6;
-}
-
-.upload_image_section {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 50px;
-  text-align: center;
-  color: #6b7280;
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  background-color: #F9FAFB;
-  min-height: 1000px;
-  padding: 40px 20px;
-}
-
-.upload_image_section h1 {
-  font-size: 36px;
-  font-weight: 400;
-  color: #111827;
-  font-family: "Sora", sans-serif;
-  text-align: center;
-  margin-top: 80px;
-  line-height: 1.2;
-  padding: 0 20px;
-}
-
-.upload_image_section p {
-  padding: 0 20px;
-  line-height: 1.6;
-}
-
-.upload_image_simulator_container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  width: 100%;
-  padding: 0 20px;
-}
-
-.upload_image_simulator {
-  height: 593.25px;
-  width: 628px;
-  max-width: 100%;
-  max-height: 60vh;
-  object-fit: contain;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-.upload_image_button_container {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 0 20px;
-}
-
-.upload_image_button {
-  height: 60px;
-  width: 350px;
-  max-width: 100%;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.upload_image_learn_more_button {
-  height: 60px;
-  width: 200px;
-  max-width: 100%;
-  margin-left: 0;
-  cursor: pointer;
-  border: 1px solid #6b7280;
-  border-radius: 100px;
-  background: transparent;
-  font-family: "Poppins", sans-serif;
-  font-size: 14px;
-  color: #6b7280;
-  padding: 0 20px;
-}
-
-.upload_image_learn_more_button select {
-  width: 100%;
-  height: 100%;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-family: "Poppins", sans-serif;
-  font-size: 14px;
-  color: #6b7280;
-  outline: none;
-}
-
-.pre_footer {
-  min-height: 400px;
-  padding: 80px 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.pre_footer_button_container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
-  cursor: pointer;
-  flex-wrap: wrap;
-  width: 100%;
-  padding: 0 20px;
-}
-
-.pre_footer h1 {
-  font-size: 41px;
-  font-weight: 400;
-  font-family: "Sora", sans-serif;
-  text-align: center;
-  line-height: 1.2;
-  padding: 0 20px;
-}
-
-.pre_footer p {
-  font-size: 13px;
-  font-weight: 400;
-  margin-top: 20px;
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-  line-height: 1.6;
-  padding: 0 20px;
-}
-
-.pre_footer_start_learning_button {
-  height: 36px;
-  width: 154px;
-  max-width: 100%;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.pre_footer_wallet_connect_button {
-  height: 36px;
-  width: 154px;
-  max-width: 100%;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
 /* --------------------------- */
-/* Responsive Breakpoints */
+/* RESPONSIVE BREAKPOINTS      */
 /* --------------------------- */
 
-/* Tablets (768px – 1023px) */
-@media (max-width: 1023px) {
-  .hero_section {
-    min-height: 400px;
-    padding: 60px 40px;
+/* Tablets (≤1024px) */
+@media (max-width: 1024px) {
+  .contribute_and_earn_steps_container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
   }
 
-  .hero_title {
-    font-size: 36px;
-  }
-
-  .hero_title_sub_text {
-    font-size: 16px;
-  }
-
-  .hero_auth_button {
-    height: 45px;
-    width: 140px;
-  }
-
-  .about_section {
-    padding: 40px 40px;
-  }
-
-  .about_section_hero_text h1 {
-    font-size: 36px;
-  }
-
-  .about_section_sub_text p {
-    font-size: 16px;
-  }
-
-  .image_comparison_item {
-    height: 200px;
-    width: 250px;
-  }
-
-  .features_section {
-    padding: 60px 40px;
-    margin: 10px 20px;
-  }
-
-  .features_section_hero_text {
-    font-size: 36px;
-  }
-
-  .feature_item_image {
+  .contribute_and_earn_step_item {
     width: 100%;
     max-width: 400px;
-    height: 250px;
-  }
-
-  .feature_item_image_checker {
-    width: 100%;
-    max-width: 700px;
-    height: 250px;
-  }
-
-  .polkadot_inclusive_conatainer {
-    padding: 40px 20px;
-  }
-
-  .polkadot_inclusive_conatainer h1 {
-    font-size: 36px;
-  }
-
-  .polkadot_inclusive_image {
-    height: auto;
-    max-height: 50vh;
-  }
-
-  .contribute_and_earn_section {
-    padding: 40px 40px;
   }
 
   .contribute_and_earn_section h1 {
     font-size: 36px;
-  }
-
-  .contribute_and_earn_steps_container {
-    gap: 20px;
-  }
-
-  .upload_image_section {
-    padding: 40px 20px;
-  }
-
-  .upload_image_section h1 {
-    font-size: 28px;
-    margin-top: 40px;
-  }
-
-  .upload_image_simulator {
-    height: auto;
-    max-height: 50vh;
-  }
-
-  .upload_image_button_container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .upload_image_learn_more_button {
-    margin-left: 0;
-    width: 100%;
-    max-width: 350px;
-  }
-
-  .pre_footer {
-    padding: 60px 40px;
-  }
-
-  .pre_footer h1 {
-    font-size: 32px;
-  }
-
-  .pre_footer_button_container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .pre_footer_start_learning_button,
-  .pre_footer_wallet_connect_button {
-    width: 100%;
-    max-width: 200px;
-  }
-}
-
-/* Mobile Landscape / Large Phones (640px – 767px) */
-@media (max-width: 767px) {
-  .hero_section {
-    min-height: 350px;
-    padding: 40px 20px;
-  }
-
-  .hero_title {
-    font-size: 28px;
-  }
-
-  .hero_title_sub_text {
-    font-size: 14px;
-  }
-
-  .hero_auth_button_container {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .hero_auth_button {
-    width: 100%;
-    max-width: 200px;
-  }
-
-  .about_section {
-    padding: 30px 20px;
-  }
-
-  .about_section_hero_text h1 {
-    font-size: 28px;
-  }
-
-  .about_section_sub_text p {
-    font-size: 14px;
-  }
-
-  .about_section_image_comparison {
-    gap: 15px;
-    margin-top: 30px;
-  }
-
-  .image_comparison_item {
-    height: 150px;
-    width: 150px;
-  }
-
-  .features_section {
-    padding: 40px 20px;
-    margin: 10px 0;
-  }
-
-  .features_section_hero_text {
-    font-size: 28px;
-  }
-
-  .feature_item_first_pair {
-    gap: 20px;
-    margin-top: 30px;
-  }
-
-  .feature_item_image {
-    height: 200px;
-  }
-
-  .feature_item_second_pair {
-    margin-top: 30px;
-  }
-
-  .feature_item_image_checker {
-    height: 200px;
-  }
-
-  .demarcator {
-    margin-top: 30px;
-  }
-
-  .polkadot_inclusive_conatainer {
-    padding: 30px 20px;
-  }
-
-  .polkadot_inclusive_conatainer h1 {
-    font-size: 28px;
-  }
-
-  .polkadot_inclusive_sub_text {
-    font-size: 14px;
-  }
-
-  .polkadot_inclusive_image_container {
-    margin-top: 30px;
-  }
-
-  .polkadot_inclusive_image {
-    max-height: 40vh;
-  }
-
-  .polkadot_inclusive_wallet_connect_btn {
-    width: 100%;
-    max-width: 200px;
-  }
-
-  .polkadot_inclusive_conatainer_final_text {
-    font-size: 14px;
-  }
-
-  .contribute_and_earn_section {
-    padding: 30px 20px;
-  }
-
-  .contribute_and_earn_section h1 {
-    font-size: 28px;
   }
 
   .contribute_and_earn_section p {
-    font-size: 14px;
+    font-size: 16px;
   }
 
+  .contribute_and_earn_final_image_container p {
+    font-size: 16px;
+  }
+
+  .claim_your_token_btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+/* Mobile Landscape / Large Phones (≤767px) */
+@media (max-width: 767px) {
   .contribute_and_earn_steps_container {
     gap: 15px;
-    margin-top: 30px;
   }
 
   .contribute_and_earn_step_item {
@@ -800,423 +377,51 @@
     max-width: 200px;
   }
 
-  .claim_your_token_btn {
-    width: 100%;
-    max-width: 250px;
+  .contribute_and_earn_section h1 {
+    font-size: 28px;
+  }
+
+  .contribute_and_earn_section p {
+    font-size: 14px;
   }
 
   .contribute_and_earn_final_image_container p {
     font-size: 14px;
   }
 
-  .upload_image_section {
-    padding: 30px 20px;
-  }
-
-  .upload_image_section h1 {
-    font-size: 24px;
-    margin-top: 30px;
-  }
-
-  .upload_image_section p {
-    font-size: 14px;
-  }
-
-  .upload_image_simulator {
-    max-height: 40vh;
-  }
-
-  .upload_image_button {
-    width: 100%;
-    max-width: 350px;
-  }
-
-  .upload_image_learn_more_button {
-    width: 100%;
-    max-width: 350px;
-  }
-
-  .pre_footer {
-    padding: 40px 20px;
-  }
-
-  .pre_footer h1 {
-    font-size: 24px;
-  }
-
-  .pre_footer p {
-    font-size: 12px;
+  .claim_your_token_btn {
+    max-width: 200px;
   }
 }
 
-/* Small Phones (max-width: 639px) */
+/* Small Phones (≤639px) */
 @media (max-width: 639px) {
-  .hero_section {
-    min-height: 300px;
-    padding: 30px 15px;
-  }
-
-  .hero_title {
-    font-size: 24px;
-  }
-
-  .hero_title_sub_text {
-    font-size: 13px;
-    margin-top: 15px;
-  }
-
-  .hero_auth_button {
-    height: 40px;
-    width: 100%;
-    max-width: 180px;
-  }
-
-  .about_section {
-    padding: 25px 15px;
-  }
-
-  .about_section_hero_text h1 {
-    font-size: 24px;
-  }
-
-  .about_section_sub_text {
-    margin-top: 20px;
-  }
-
-  .about_section_sub_text p {
-    font-size: 13px;
-  }
-
-  .about_section_image_comparison {
+  .contribute_and_earn_steps_container {
     gap: 10px;
-    margin-top: 25px;
   }
 
-  .image_comparison_item {
-    height: 120px;
-    width: 120px;
-  }
-
-  .features_section {
-    padding: 30px 15px;
-    margin: 10px 0;
-  }
-
-  .features_section_hero_text {
-    font-size: 24px;
-  }
-
-  .feature_item_first_pair {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-top: 25px;
-  }
-
-  .feature_item_image {
+  .contribute_and_earn_step_item {
     width: 100%;
-    max-width: 350px;
-    height: 180px;
-  }
-
-  .feature_item_second_pair {
-    margin-top: 25px;
-  }
-
-  .feature_item_image_checker {
-    width: 100%;
-    height: 180px;
-  }
-
-  .demarcator {
-    margin-top: 25px;
-  }
-
-  .demarcator_image {
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .polkadot_inclusive_conatainer {
-    padding: 25px 15px;
-  }
-
-  .polkadot_inclusive_conatainer h1 {
-    font-size: 24px;
-  }
-
-  .polkadot_inclusive_sub_text {
-    font-size: 13px;
-    margin-top: 20px;
-  }
-
-  .polkadot_inclusive_image_container {
-    margin-top: 25px;
-  }
-
-  .polkadot_inclusive_image {
-    max-height: 35vh;
-  }
-
-  .polkadot_inclusive_wallet_connect_btn {
-    height: 50px;
-    width: 100%;
-    max-width: 180px;
-  }
-
-  .polkadot_inclusive_conatainer_final_text {
-    font-size: 13px;
-    margin-top: 20px;
-  }
-
-  .contribute_and_earn_section {
-    padding: 25px 15px;
+    max-width: 150px;
   }
 
   .contribute_and_earn_section h1 {
     font-size: 24px;
   }
 
-  .contribute_and_earn_section p {
+  .contribute_and_earn_section p,
+  .contribute_and_earn_final_image_container p {
     font-size: 13px;
-    margin-top: 20px;
-  }
-
-  .contribute_and_earn_steps_container {
-    gap: 10px;
-    margin-top: 25px;
-  }
-
-  .contribute_and_earn_step_item {
-    width: calc(50% - 5px);
-    max-width: 150px;
-  }
-
-  .contribute_and_earn_final_image_container {
-    margin-top: 25px;
   }
 
   .claim_your_token_btn {
-    height: 50px;
-    width: 100%;
-    max-width: 220px;
-  }
-
-  .contribute_and_earn_final_image_container p {
-    font-size: 13px;
-    margin-top: 15px;
-  }
-
-  .upload_image_section {
-    padding: 25px 15px;
-  }
-
-  .upload_image_section h1 {
-    font-size: 20px;
-    margin-top: 25px;
-  }
-
-  .upload_image_section p {
-    font-size: 13px;
-  }
-
-  .upload_image_simulator_container {
-    margin-top: 15px;
-  }
-
-  .upload_image_simulator {
-    max-height: 35vh;
-  }
-
-  .upload_image_button_container {
-    margin-top: 20px;
-    gap: 15px;
-  }
-
-  .upload_image_button {
-    height: 50px;
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .upload_image_learn_more_button {
-    height: 50px;
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .pre_footer {
-    padding: 30px 15px;
-    min-height: 300px;
-  }
-
-  .pre_footer h1 {
-    font-size: 20px;
-  }
-
-  .pre_footer p {
-    font-size: 11px;
-    margin-top: 15px;
-  }
-
-  .pre_footer_button_container {
-    margin-top: 20px;
-    gap: 15px;
-  }
-
-  .pre_footer_start_learning_button,
-  .pre_footer_wallet_connect_button {
-    height: 40px;
-    width: 100%;
-    max-width: 180px;
+    max-width: 150px;
   }
 }
 
-/* 4K Ultra-Wide Screens (2560px+) */
-@media (min-width: 2560px) {
-  .hero_section {
-    min-height: 650px;
-    padding: 120px 300px;
-  }
-
-  .hero_title {
-    font-size: 68px;
-  }
-
-  .hero_title_sub_text {
-    font-size: 26px;
-  }
-
-  .feature_item_image {
-    width: 550px;
-    height: 350px;
-  }
-
-  .feature_item_image_checker {
-    width: 1400px;
-    height: 400px;
-  }
-
-  .polkadot_inclusive_image {
-    width: 1800px;
-    height: 1000px;
-  }
-
-  .upload_image_simulator {
-    width: 900px;
-    height: auto;
-  }
-
+/* Large screens (≥1920px) */
+@media (min-width: 1920px) {
   .contribute_and_earn_steps_container {
-    gap: 80px;
+    gap: 60px;
   }
 }
-
-/* Large Desktops (1920px – 2559px) */
-@media (min-width: 1920px) and (max-width: 2559px) {
-  .hero_section {
-    min-height: 550px;
-    padding: 100px 200px;
-  }
-
-  .hero_title {
-    font-size: 58px;
-  }
-
-  .hero_title_sub_text {
-    font-size: 22px;
-  }
-
-  .feature_item_image {
-    width: 500px;
-    height: 320px;
-  }
-
-  .feature_item_image_checker {
-    width: 1200px;
-    height: 350px;
-  }
-
-  .polkadot_inclusive_image {
-    width: 1500px;
-    height: 900px;
-  }
-
-  .upload_image_simulator {
-    width: 760px;
-    height: auto;
-  }
-}
-
-/* Small Desktops (1280px – 1439px) */
-@media (min-width: 1280px) and (max-width: 1439px) {
-  .hero_section {
-    min-height: 420px;
-    padding: 60px 70px;
-  }
-
-  .hero_title {
-    font-size: 42px;
-  }
-
-  .hero_title_sub_text {
-    font-size: 17px;
-  }
-
-  .feature_item_image {
-    width: 360px;
-    height: 230px;
-  }
-
-  .feature_item_image_checker {
-    width: 700px;
-    height: 220px;
-  }
-
-  .polkadot_inclusive_image {
-    width: 900px;
-    height: 520px;
-  }
-
-  .upload_image_simulator {
-    width: 520px;
-    height: auto;
-  }
-}
-
-/* Very Small Desktops (1024px – 1279px) */
-@media (min-width: 1024px) and (max-width: 1279px) {
-  .hero_section {
-    min-height: 380px;
-    padding: 50px 50px;
-  }
-
-  .hero_title {
-    font-size: 36px;
-  }
-
-  .hero_title_sub_text {
-    font-size: 16px;
-  }
-
-  .feature_item_image {
-    width: 300px;
-    height: 200px;
-  }
-
-  .feature_item_image_checker {
-    width: 600px;
-    height: 200px;
-  }
-
-  .polkadot_inclusive_image {
-    width: 900px;
-    height: 520px;
-  }
-
-  .upload_image_simulator {
-    width: 520px;
-    height: auto;
-  }
-}
-

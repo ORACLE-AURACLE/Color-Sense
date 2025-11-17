@@ -1,6 +1,7 @@
 "use client";
-import { useRouter } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { useRouter } from "next/navigation";
+import { useEffect, useRef } from "react";
+import { useWallet } from "@/contexts/WalletContext";
 import styles from "./LandingPageComponent.module.css";
 import WalletConnect from "../../../public/asset/walletconnect.png";
 import TrySimulator from "../../../public/asset/trysimulator.png";
@@ -19,7 +20,8 @@ import LearnAndEarn from "../../../public/asset/learnandcontribute.png";
 import EarnColorTokens from "../../../public/asset/earncolortokens.png";
 import ClaimYourImpact from "../../../public/asset/claimimpact.png";
 import Image from "next/image";
-import NavBarComponent from "../layout/navbar/Navbar";
+import NavBarComponent from "../../layout/navbar/Navbar";
+import WalletConnectButton from "../wallet/WalletConnectButton";
 import Claimyourtoken from "../../../public/asset/claimyourtokenbtn.png";
 import SimulatorUpload from "../../../public/asset/uploadimage.png";
 import UplaodImageButton from "../../../public/asset/uploadbtn.png";
@@ -35,7 +37,7 @@ const LandingPageComponent = () => {
   // Redirect to app if already connected
   useEffect(() => {
     if (isConnected) {
-      router.push('/app');
+      router.push("/app");
     }
   }, [isConnected, router]);
   return (
@@ -55,21 +57,32 @@ const LandingPageComponent = () => {
               </p>
             </div>
             <div className={styles.hero_auth_button_container}>
-              <div className={styles.hero_auth_button} style={{ position: 'relative' }}>
+              <div
+                className={styles.hero_auth_button}
+                style={{ position: "relative" }}
+              >
                 <button
                   type="button"
                   className={styles.hero_auth_button}
-                  style={{ position: 'relative' }}
+                  style={{ position: "relative" }}
                   onClick={() => {
                     if (isConnected) {
-                      router.push('/app');
+                      router.push("/app");
                     } else {
                       // Show wallet connect if not connected
                       walletConnectRef.current?.open();
                     }
                   }}
                 >
-                  <Image src={WalletConnect} alt="Connect Wallet" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                  <Image
+                    src={WalletConnect}
+                    alt="Connect Wallet"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                    }}
+                  />
                 </button>
                 <WalletConnectButton
                   ref={walletConnectRef}
@@ -78,14 +91,14 @@ const LandingPageComponent = () => {
                   onConnectSuccess={() => {
                     // Small delay to ensure wallet state is saved
                     setTimeout(() => {
-                      router.push('/app');
+                      router.push("/app");
                     }, 500);
                   }}
                   style={{
-                    position: 'absolute',
+                    position: "absolute",
                     inset: 0,
-                    width: '100%',
-                    height: '100%',
+                    width: "100%",
+                    height: "100%",
                     top: 0,
                     left: 0,
                   }}
@@ -94,7 +107,7 @@ const LandingPageComponent = () => {
               <button
                 onClick={() => {
                   if (isConnected) {
-                    router.push('/app/');
+                    router.push("/app/");
                   } else {
                     // Show wallet connect if not connected
                     walletConnectRef.current?.open();
@@ -206,21 +219,32 @@ const LandingPageComponent = () => {
             <div
               className={styles.polkadot_inclusive_wallet_connect_btn_container}
             >
-              <div className={styles.polkadot_inclusive_wallet_connect_btn} style={{ position: 'relative' }}>
-                <Image src={CurvyWalletConnect} alt="Connect Wallet" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+              <div
+                className={styles.polkadot_inclusive_wallet_connect_btn}
+                style={{ position: "relative" }}
+              >
+                <Image
+                  src={CurvyWalletConnect}
+                  alt="Connect Wallet"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
+                />
                 <WalletConnectButton
                   asImageButton={true}
                   onConnectSuccess={() => {
                     setTimeout(() => {
-                      router.push('/app');
+                      router.push("/app");
                     }, 500);
                   }}
                   style={{
-                    position: 'absolute',
+                    position: "absolute",
                     inset: 0,
-                    width: '100%',
-                    height: '100%',
-                    opacity: 0
+                    width: "100%",
+                    height: "100%",
+                    opacity: 0,
                   }}
                 />
               </div>
@@ -304,30 +328,40 @@ const LandingPageComponent = () => {
 
         <div className={styles.pre_footer}>
           <h1>Design for everyone. Start today.</h1>
-          <p>Create, learn, and earn recognition for making design accessible to all.</p>
+          <p>
+            Create, learn, and earn recognition for making design accessible to
+            all.
+          </p>
           <div className={styles.pre_footer_button_container}>
-            <div className={styles.pre_footer_wallet_connect_button} style={{ position: 'relative' }}>
-              <Image src={WhiteCurvyWalletConnect} alt="Connect Wallet" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+            <div
+              className={styles.pre_footer_wallet_connect_button}
+              style={{ position: "relative" }}
+            >
+              <Image
+                src={WhiteCurvyWalletConnect}
+                alt="Connect Wallet"
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              />
               <WalletConnectButton
                 asImageButton={true}
                 onConnectSuccess={() => {
                   setTimeout(() => {
-                    router.push('/app');
+                    router.push("/app");
                   }, 500);
                 }}
                 style={{
-                  position: 'absolute',
+                  position: "absolute",
                   inset: 0,
-                  width: '100%',
-                  height: '100%',
-                  opacity: 0
+                  width: "100%",
+                  height: "100%",
+                  opacity: 0,
                 }}
               />
             </div>
             <button
               onClick={() => {
                 if (isConnected) {
-                  router.push('/app');
+                  router.push("/app");
                 } else {
                   // Show wallet connect if not connected
                   walletConnectRef.current?.open();
@@ -335,10 +369,7 @@ const LandingPageComponent = () => {
               }}
               className={styles.pre_footer_start_learning_button}
             >
-              <Image
-                src={StartLearning}
-                alt="start learning button"
-              />
+              <Image src={StartLearning} alt="start learning button" />
             </button>
           </div>
         </div>
