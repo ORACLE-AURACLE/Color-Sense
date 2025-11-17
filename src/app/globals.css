@@ -120,3 +120,42 @@
     @apply bg-background text-foreground;
   }
 }
+
+button {
+  cursor: pointer;
+}
+
+.blue-gradient {
+  background: linear-gradient(135deg, rgba(0, 212, 224, 0.1) 0%, rgba(0, 212, 224, 0.2) 100%);
+}
+
+.green-gradient {
+  background: linear-gradient(135deg, rgba(0, 200, 151, 0.1) 0%, rgba(0, 200, 151, 0.2) 100%);
+}
+
+.cyan-gradient {
+  background: linear-gradient(180deg, rgba(0, 212, 224, 0.08) 0%, rgba(0, 212, 224, 0.1) 100%);
+  border: 1px solid #00D4E033
+}
+
+.lavender-gradient {
+  background: linear-gradient(135deg, rgba(147, 121, 230, 0.082) 0%, rgba(147, 121, 230, 0.145) 100%);
+  border-top: 2px solid #9379E630
+}
+
+.cyan-2-gradient {
+  background: linear-gradient(135deg, rgba(0, 212, 224, 0.082) 0%, rgba(0, 212, 224, 0.145) 100%);
+  border-top: 2px solid #00D4E030
+}
+
+.blue-purple-gradient {
+  background: linear-gradient(170.54deg, rgba(0, 212, 224, 0.4) -17.42%, #9379E6 92.86%);
+}
+
+.purple-gradient {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0.2) 100%);
+}
+
+.orange-gradient {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.2) 100%);
+}
