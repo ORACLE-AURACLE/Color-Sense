@@ -46,6 +46,15 @@
   width: 160px;
   cursor: pointer;
 }
+
+.wallet_connect_wrapper {
+  position: relative;
+  height: 50px;
+  width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 @media (max-width: 1200px) {
   .navbar {
     padding: 10px 60px;
@@ -98,6 +107,11 @@
   }
 
   .wallet_connect {
+    width: 140px;
+    height: 45px;
+  }
+
+  .wallet_connect_wrapper {
     width: 140px;
     height: 45px;
   }
@@ -159,6 +173,11 @@
 
   .login_button,
   .wallet_connect {
+    width: 45%;
+    height: 40px;
+  }
+
+  .wallet_connect_wrapper {
     width: 45%;
     height: 40px;
   }

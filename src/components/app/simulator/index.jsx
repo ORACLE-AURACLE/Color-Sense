@@ -1,21 +1,34 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 import SimulatorUpload from "./upload";
 import SimulatorControls from "./controls";
 import { applyVisionFilter } from "@/lib/utils/visionTransform";
+import { useToken } from "@/hooks/useToken";
 
 export default function Simulator() {
   const [originalImage, setOriginalImage] = useState(null);
   const [transformedImage, setTransformedImage] = useState(null);
   const [selectedVisionMode, setSelectedVisionMode] = useState("normal");
   const [imageUrl, setImageUrl] = useState(null);
+  const { earnTokens, updateStats, stats } = useToken();
+  const hasUploadedRef = useRef(false);
+  const testedVisionModesRef = useRef(new Set());
 
   useEffect(() => {
     if (originalImage && selectedVisionMode) {
       transformImage(originalImage, selectedVisionMode);
+      
+      // Award tokens for applying vision filter (if not normal mode)
+      if (selectedVisionMode !== "normal" && !testedVisionModesRef.current.has(selectedVisionMode)) {
+        testedVisionModesRef.current.add(selectedVisionMode);
+        updateStats({ 
+          visionModes: [selectedVisionMode]
+        });
+        earnTokens('APPLY_VISION_FILTER');
+      }
     }
-  }, [originalImage, selectedVisionMode]);
+  }, [originalImage, selectedVisionMode, earnTokens, updateStats]);
 
   const transformImage = (imageSrc, visionMode) => {
     const img = new Image();
@@ -54,6 +67,12 @@ export default function Simulator() {
       setTransformedImage(imageSrc);
       setImageUrl(imageSrc);
     }
+    
+    // Award tokens for uploading image (first time only)
+    if (!hasUploadedRef.current && imageSrc) {
+      hasUploadedRef.current = true;
+      earnTokens('UPLOAD_IMAGE');
+    }
   };
 
   const handleVisionModeChange = (mode) => {
@@ -78,6 +97,9 @@ export default function Simulator() {
         description: "The image has been downloaded.",
         duration: 3000,
       });
+
+      // Award tokens for saving image
+      earnTokens('SAVE_IMAGE');
     } catch (error) {
       console.error("Error saving image:", error);
       toast.error("Failed to save image", {
@@ -110,6 +132,10 @@ export default function Simulator() {
           description: "Image has been shared.",
           duration: 3000,
         });
+
+        // Award tokens for sharing image
+        updateStats({ imagesShared: 1 });
+        earnTokens('SHARE_IMAGE');
       } else {
         // Fallback: copy to clipboard or show download
         await navigator.clipboard.write([
@@ -119,6 +145,10 @@ export default function Simulator() {
           description: "Image has been copied to your clipboard.",
           duration: 3000,
         });
+
+        // Award tokens for sharing image (copying counts as sharing)
+        updateStats({ imagesShared: 1 });
+        earnTokens('SHARE_IMAGE');
       }
     } catch (error) {
       // User cancelled sharing - don't show error
