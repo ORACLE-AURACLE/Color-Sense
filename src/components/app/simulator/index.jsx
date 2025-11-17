@@ -11,7 +11,7 @@ export default function Simulator() {
   const [transformedImage, setTransformedImage] = useState(null);
   const [selectedVisionMode, setSelectedVisionMode] = useState("normal");
   const [imageUrl, setImageUrl] = useState(null);
-  const { earnTokens, updateStats, stats } = useToken();
+  const { earnTokens, updateStats } = useToken();
   const hasUploadedRef = useRef(false);
   const testedVisionModesRef = useRef(new Set());
 
@@ -19,7 +19,6 @@ export default function Simulator() {
     if (originalImage && selectedVisionMode) {
       transformImage(originalImage, selectedVisionMode);
       
-      // Award tokens for applying vision filter (if not normal mode)
       if (selectedVisionMode !== "normal" && !testedVisionModesRef.current.has(selectedVisionMode)) {
         testedVisionModesRef.current.add(selectedVisionMode);
         updateStats({ 
@@ -68,7 +67,6 @@ export default function Simulator() {
       setImageUrl(imageSrc);
     }
     
-    // Award tokens for uploading image (first time only)
     if (!hasUploadedRef.current && imageSrc) {
       hasUploadedRef.current = true;
       earnTokens('UPLOAD_IMAGE');
@@ -98,7 +96,6 @@ export default function Simulator() {
         duration: 3000,
       });
 
-      // Award tokens for saving image
       earnTokens('SAVE_IMAGE');
     } catch (error) {
       console.error("Error saving image:", error);
@@ -133,11 +130,9 @@ export default function Simulator() {
           duration: 3000,
         });
 
-        // Award tokens for sharing image
         updateStats({ imagesShared: 1 });
         earnTokens('SHARE_IMAGE');
       } else {
-        // Fallback: copy to clipboard or show download
         await navigator.clipboard.write([
           new ClipboardItem({ "image/png": blob })
         ]);
@@ -146,12 +141,10 @@ export default function Simulator() {
           duration: 3000,
         });
 
-        // Award tokens for sharing image (copying counts as sharing)
         updateStats({ imagesShared: 1 });
         earnTokens('SHARE_IMAGE');
       }
     } catch (error) {
-      // User cancelled sharing - don't show error
       if (error.name === "AbortError") {
         return;
       }
@@ -160,7 +153,7 @@ export default function Simulator() {
         description: "Falling back to download.",
         duration: 3000,
       });
-      handleSaveImage(); // Fallback to download
+      handleSaveImage();
     }
   };
 

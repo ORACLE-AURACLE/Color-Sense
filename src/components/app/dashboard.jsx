@@ -10,11 +10,10 @@ import WalletStatus from "@/components/wallet/WalletStatus";
 
 export default function AppDashboard() {
   const { selectedAccount } = useWallet();
-  const { balance, stats } = useToken();
+  const { stats } = useToken();
 
   const userName = selectedAccount?.name || selectedAccount?.address?.slice(0, 6) || "User";
 
-  // Action stats cards
   const actionStats = [
     {
       title: "Contrast Checks",
@@ -44,7 +43,6 @@ export default function AppDashboard() {
 
   return (
     <div className="w-full space-y-4 sm:space-y-6">
-      {/* Welcome Section with Wallet Info and Tokens */}
       <section className="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="space-y-1 sm:space-y-2">
           <h1 className="text-2xl sm:text-3xl font-bold">
@@ -60,7 +58,6 @@ export default function AppDashboard() {
         </div>
       </section>
 
-      {/* Quick Action Cards */}
       <section className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         {app_cards.map((item, idx) => (
           <Link key={idx} href={item.href || "#"} className="block">
@@ -77,7 +74,6 @@ export default function AppDashboard() {
         ))}
       </section>
 
-      {/* Action Stats Cards */}
       <section className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         {actionStats.map((stat, idx) => (
           <Card
@@ -97,7 +93,6 @@ export default function AppDashboard() {
         ))}
       </section>
 
-      {/* Accessibility Checker Card */}
       <Card className="rounded-2xl sm:rounded-3xl w-full max-w-lg blue-purple-gradient">
         <CardContent className="text-white space-y-3 sm:space-y-4 p-4 sm:p-6">
           <Zap className="size-6 sm:size-8" />

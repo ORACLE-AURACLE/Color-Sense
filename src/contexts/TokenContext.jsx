@@ -8,7 +8,6 @@ import { toast } from 'sonner';
 const TokenContext = createContext(undefined);
 
 export function TokenProvider({ children }) {
-  // Get wallet address from localStorage or context
   const [walletAddress, setWalletAddress] = useState(null);
   const [balance, setBalance] = useState(0);
   const [totalEarned, setTotalEarned] = useState(0);
@@ -24,7 +23,6 @@ export function TokenProvider({ children }) {
   const [history, setHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Listen for wallet connection changes via localStorage
   useEffect(() => {
     const checkWallet = () => {
       const savedState = localStorage.getItem('colorSense_wallet');
@@ -43,7 +41,6 @@ export function TokenProvider({ children }) {
     checkWallet();
     const interval = setInterval(checkWallet, 1000);
     
-    // Also listen to storage events
     window.addEventListener('storage', checkWallet);
     
     return () => {
@@ -55,7 +52,6 @@ export function TokenProvider({ children }) {
   const checkDailyLogin = useCallback(() => {
     if (!walletAddress) return;
     
-    // Update login streak (this will award daily login bonus if applicable)
     const data = tokenService.loadTokenData(walletAddress);
     if (data) {
       const today = new Date().toISOString().split('T')[0];
@@ -64,7 +60,6 @@ export function TokenProvider({ children }) {
       // Only award daily login if it's a new day
       if (lastLogin !== today) {
         updateStats({ loginStreak: 1 });
-        // Award daily login bonus
         earnTokens('DAILY_LOGIN', {});
       }
     }
@@ -74,7 +69,6 @@ export function TokenProvider({ children }) {
   useEffect(() => {
     if (walletAddress) {
       loadTokenData();
-      // Check for daily login bonus after a short delay
       setTimeout(() => {
         checkDailyLogin();
       }, 500);
@@ -119,17 +113,14 @@ export function TokenProvider({ children }) {
 
     setIsLoading(true);
     try {
-      // Calculate reward
       const rewardAmount = calculateReward(actionType, context);
       
       if (rewardAmount === 0) {
         return { success: false, error: 'No reward for this action' };
       }
 
-      // Get action description
       const description = getActionDescription(actionType);
 
-      // Add tokens
       const result = tokenService.addTokens(
         walletAddress,
         rewardAmount,
@@ -138,15 +129,12 @@ export function TokenProvider({ children }) {
       );
 
       if (result.success) {
-        // Update stats if needed
         if (context.statUpdates) {
           tokenService.updateStats(walletAddress, context.statUpdates);
         }
 
-        // Reload data
         loadTokenData();
 
-        // Show toast notification
         toast.success(`+${rewardAmount} Tokens`, {
           description: description,
           duration: 3000,
@@ -177,7 +165,6 @@ export function TokenProvider({ children }) {
     const currentStats = tokenService.getStats(walletAddress);
     const earnedIds = tokenService.getEarnedAchievementIds(walletAddress);
     
-    // Convert visionModes Set to count
     const statsForCheck = {
       ...currentStats,
       visionModesTested: currentStats.visionModes?.size || 0,
@@ -185,7 +172,6 @@ export function TokenProvider({ children }) {
 
     const newAchievements = getNewAchievements(statsForCheck, earnedIds);
 
-    // Award new achievements
     newAchievements.forEach(achievement => {
       tokenService.markAchievementEarned(
         walletAddress,
@@ -193,13 +179,11 @@ export function TokenProvider({ children }) {
         achievement.reward
       );
 
-      // Show achievement toast
       toast.success(`Achievement Unlocked!`, {
         description: `${achievement.icon} ${achievement.name}: ${achievement.description}`,
         duration: 5000,
       });
 
-      // If achievement has reward, show additional toast
       if (achievement.reward > 0) {
         setTimeout(() => {
           toast.success(`+${achievement.reward} Tokens`, {
@@ -210,7 +194,6 @@ export function TokenProvider({ children }) {
       }
     });
 
-    // Reload data
     loadTokenData();
   }, [walletAddress, loadTokenData]);
 
@@ -220,7 +203,6 @@ export function TokenProvider({ children }) {
     const result = tokenService.updateStats(walletAddress, statUpdates);
     if (result.success) {
       loadTokenData();
-      // Check for achievements after stat update
       setTimeout(() => checkAchievements(), 100);
     }
   }, [walletAddress, loadTokenData, checkAchievements]);

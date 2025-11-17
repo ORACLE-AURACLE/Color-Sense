@@ -14,7 +14,6 @@ export function WalletProvider({ children }) {
 
   // Load wallet state from localStorage on mount
   useEffect(() => {
-    // Only run on client side
     if (typeof window === 'undefined') {
       setIsLoading(false);
       return;
@@ -26,10 +25,8 @@ export function WalletProvider({ children }) {
         if (savedState) {
           const { address, walletName: savedWalletName } = JSON.parse(savedState);
           
-          // Validate connection and restore full account info
           const isValid = await validateConnection(address);
           if (isValid) {
-            // Re-fetch account details to get full information
             try {
               const polkadot = await import('@polkadot/extension-dapp');
               await polkadot.web3Enable('Color Sense');
@@ -50,22 +47,18 @@ export function WalletProvider({ children }) {
                 })));
                 setWalletName(savedWalletName || account.meta.source);
               } else {
-                // Account not found, clear state
                 localStorage.removeItem('colorSense_wallet');
               }
             } catch (error) {
               console.error('Error restoring account details:', error);
-              // If we can't restore details, still mark as connected with basic info
               setIsConnected(true);
               setSelectedAccount({ address });
               setWalletName(savedWalletName);
             }
             
-            // Get available wallets
             const wallets = await getAvailableWallets();
             setAvailableWallets(wallets);
           } else {
-            // Clear invalid state
             localStorage.removeItem('colorSense_wallet');
           }
         }
@@ -78,7 +71,6 @@ export function WalletProvider({ children }) {
 
     loadWalletState();
     
-    // Also load available wallets
     getAvailableWallets().then(setAvailableWallets);
   }, []);
 

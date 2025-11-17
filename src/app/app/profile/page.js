@@ -72,7 +72,6 @@ export default function ProfilePage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
-        {/* Wallet Info */}
         <Card className="lg:col-span-1">
           <CardContent className="p-4 sm:p-6 space-y-4">
             <CardTitle>Wallet</CardTitle>
@@ -113,7 +112,6 @@ export default function ProfilePage() {
           </CardContent>
         </Card>
 
-        {/* Token Balance */}
         <Card className="lg:col-span-2">
           <CardContent className="p-4 sm:p-6 space-y-4">
             <CardTitle className="flex items-center gap-2">
@@ -133,7 +131,6 @@ export default function ProfilePage() {
         </Card>
       </div>
 
-      {/* Statistics */}
       <Card>
         <CardContent className="p-4 sm:p-6 space-y-4">
           <CardTitle className="flex items-center gap-2">
@@ -168,7 +165,6 @@ export default function ProfilePage() {
         </CardContent>
       </Card>
 
-      {/* Achievements */}
       <Card>
         <CardContent className="p-4 sm:p-6 space-y-4">
           <CardTitle className="flex items-center gap-2">
@@ -179,7 +175,6 @@ export default function ProfilePage() {
         </CardContent>
       </Card>
 
-      {/* Recent History */}
       {history && history.length > 0 && (
         <Card>
           <CardContent className="p-4 sm:p-6 space-y-4">

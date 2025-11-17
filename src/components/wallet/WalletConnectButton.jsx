@@ -36,10 +36,9 @@ const WalletConnectButton = forwardRef(({ className, variant = "default", onConn
   };
 
   if (isConnected) {
-    return null; // Don't show connect button if already connected
+    return null;
   }
 
-  // If asImageButton is true or className suggests it's an image button (from landing page)
   const isImageButton = asImageButton || className?.includes('hero_auth_button') || 
     className?.includes('wallet_connect') || className?.includes('polkadot_inclusive_wallet_connect_btn') ||
     className?.includes('pre_footer_wallet_connect_button');

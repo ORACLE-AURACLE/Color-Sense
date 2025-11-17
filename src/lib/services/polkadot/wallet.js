@@ -193,8 +193,6 @@ export const getSigner = async (address) => {
  * Disconnect wallet (clear local state)
  */
 export const disconnectWallet = () => {
-  // Note: We can't actually disconnect from the extension
-  // This just clears our local state
   return { success: true };
 };
 
@@ -209,7 +207,6 @@ export const validateConnection = async (address) => {
     const polkadot = await getPolkadotExtension();
     if (!polkadot) return false;
     
-    // Must call web3Enable first before web3Accounts
     const extensions = await polkadot.web3Enable('Color Sense');
     if (extensions.length === 0) {
       return false;

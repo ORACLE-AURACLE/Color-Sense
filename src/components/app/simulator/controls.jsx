@@ -41,10 +41,8 @@ export default function SimulatorControls({
       const errorInfo = parseAPIError(error);
       const mode = vision_modes.find(m => m.id === modeId);
       
-      // Fallback to default description
       setVisionInfo(mode?.description || "Information unavailable.");
       
-      // Don't show toast for config errors (user might not have API set up)
       if (errorInfo.type !== "CONFIG_ERROR") {
         toast.error("Failed to load vision information", {
           description: errorInfo.message,
@@ -70,8 +68,6 @@ export default function SimulatorControls({
   const handleCameraClick = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      // For simplicity, we'll use a file input with capture attribute
-      // In a full implementation, you'd create a camera modal
       const input = document.createElement("input");
       input.type = "file";
       input.accept = "image/*";
@@ -98,14 +94,12 @@ export default function SimulatorControls({
     return paragraphs.map((paragraph, idx) => {
       const trimmed = paragraph.trim();
       
-      // Check if it's a section title (short, no bullets, no numbers, single line)
       const isSectionTitle = trimmed.length < 100 && 
         !trimmed.startsWith("•") && 
         !trimmed.match(/^\d+\./) &&
         !trimmed.includes("\n") &&
         trimmed.split(" ").length < 15;
       
-      // Check if it's a list (starts with bullet)
       const isList = trimmed.startsWith("•") || trimmed.includes("\n•");
       
       if (isSectionTitle) {

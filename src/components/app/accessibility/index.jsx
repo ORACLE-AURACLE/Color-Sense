@@ -8,7 +8,6 @@ import WCAGCompliance from "./wcagCompliance";
 import LivePreview from "./livePreview";
 import AccessibilityControls from "./controls";
 import { getContrastRatio, getWCAGCompliance } from "@/lib/utils/contrast";
-import { validateHexColor } from "@/lib/utils/errorHandler";
 import { useToken } from "@/hooks/useToken";
 
 export default function AccessibilityChecker() {
@@ -17,7 +16,7 @@ export default function AccessibilityChecker() {
   const [selectedVisionMode, setSelectedVisionMode] = useState("normal");
   const [contrastRatio, setContrastRatio] = useState(21);
   const [compliance, setCompliance] = useState(null);
-  const { earnTokens, updateStats, stats } = useToken();
+  const { earnTokens, updateStats } = useToken();
   const hasCheckedRef = useRef(false);
   const lastColorsRef = useRef({ fg: "", bg: "" });
 
@@ -27,7 +26,6 @@ export default function AccessibilityChecker() {
     const newCompliance = getWCAGCompliance(ratio);
     setCompliance(newCompliance);
 
-    // Award tokens for contrast check
     const colorsChanged = 
       lastColorsRef.current.fg !== foregroundColor || 
       lastColorsRef.current.bg !== backgroundColor;
@@ -35,10 +33,8 @@ export default function AccessibilityChecker() {
     if (colorsChanged && (foregroundColor !== "#000000" || backgroundColor !== "#FFFFFF")) {
       const isFirstCheck = !hasCheckedRef.current;
       
-      // Update stats
       updateStats({ contrastChecks: 1 });
       
-      // Award tokens based on compliance
       if (newCompliance) {
         if (newCompliance.normal?.AAA) {
           earnTokens('WCAG_AAA_COMPLIANCE', { compliance: newCompliance });
@@ -101,7 +97,6 @@ export default function AccessibilityChecker() {
         duration: 3000,
       });
 
-      // Award tokens for saving report
       updateStats({ reportsSaved: 1 });
       earnTokens('SAVE_REPORT');
     } catch (error) {
@@ -139,12 +134,10 @@ export default function AccessibilityChecker() {
           duration: 3000,
         });
 
-        // Award tokens for sharing report (copying counts as sharing)
         updateStats({ imagesShared: 1 });
         earnTokens('SHARE_REPORT');
       }
     } catch (error) {
-      // User cancelled sharing - don't show error
       if (error.name === "AbortError") {
         return;
       }

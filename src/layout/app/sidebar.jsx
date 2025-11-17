@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
-// Custom Tooltip Component
 const SidebarTooltip = ({ children, text, show }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0 });
@@ -108,7 +107,6 @@ export default function AppSidebar({ open, onClose }) {
     onClose?.();
   }
 
-  // Close sidebar on mobile when clicking a link
   const handleLinkClick = () => {
     if (typeof window !== 'undefined' && window.innerWidth < 1024) {
       handleMenuClick();

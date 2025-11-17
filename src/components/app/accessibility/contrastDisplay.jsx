@@ -1,6 +1,6 @@
 "use client";
 import { CheckCircle2, XCircle, AlertCircle } from "lucide-react";
-import { getWCAGCompliance, getComplianceStatus } from "@/lib/utils/contrast";
+import { getComplianceStatus } from "@/lib/utils/contrast";
 
 export default function ContrastDisplay({ contrastRatio, compliance }) {
   const status = getComplianceStatus(compliance);

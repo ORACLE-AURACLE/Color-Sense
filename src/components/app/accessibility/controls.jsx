@@ -58,7 +58,6 @@ export default function AccessibilityControls({
       console.error("Failed to load color guidance:", error);
       const errorInfo = parseAPIError(error);
       
-      // Don't show toast for config errors (user might not have API set up)
       if (errorInfo.type === "CONFIG_ERROR") {
         setGuidance(null);
         return;
@@ -86,10 +85,8 @@ export default function AccessibilityControls({
       const errorInfo = parseAPIError(error);
       const mode = vision_modes.find(m => m.id === modeId);
       
-      // Fallback to default description
       setVisionInfo(mode?.description || "Information unavailable.");
       
-      // Don't show toast for config errors (user might not have API set up)
       if (errorInfo.type !== "CONFIG_ERROR") {
         toast.error("Failed to load vision information", {
           description: errorInfo.message,

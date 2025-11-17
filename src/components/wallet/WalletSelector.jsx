@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { ExternalLink, Loader2 } from 'lucide-react';
 import { useWallet } from '@/contexts/WalletContext';
-import { SUPPORTED_WALLETS } from '@/lib/services/polkadot/supportedWallets';
 
 export default function WalletSelector({ onSelect }) {
   const { availableWallets, refreshWallets, isLoading } = useWallet();
