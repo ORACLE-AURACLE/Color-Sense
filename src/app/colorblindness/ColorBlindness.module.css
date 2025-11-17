@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Sora:wght@300;400;600;700&display=swap");
+
+
+/* Grid wrapper for gradient positioning */
+.gridWrapper {
+  position: relative;
+  min-height: 420px;
+}
+
+/* Centered gradient layer behind images */
+.gradientLayer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 28vw;
+  height: 28vw;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(135deg, #00D4E0 0%, #9379E6 100%);
+  filter: blur(15vw);
+  opacity: 0.95;
+}
+
+/* Images above gradient */
+.design_image {
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.design_image:hover {
+  transform: scale(1.05);
+}
+
+/* Hover scale for misconception images */
+.misconception_image:hover {
+  transform: scale(1.02);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gridWrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    min-height: auto;
+  }
+  .gradientLayer {
+    width: 60vw;
+    height: 60vw;
+    filter: blur(40vw);
+  }
+}

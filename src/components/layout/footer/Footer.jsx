@@ -1,5 +1,5 @@
 import styles from "./Foooter.module.css";
-import Logo from "../../asset/logo.png";
+import Logo from "../../../../public/asset/logo.png";
 import Image from "next/image";
 
 const FooterComponent = () => {
@@ -20,6 +20,7 @@ const FooterComponent = () => {
                 </a>
                 <a href="#about" className={styles.footer_link}>
                     Contact
+
                 </a>
                 <a href="#github" className={styles.footer_link}>
                     GitHub

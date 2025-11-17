@@ -2,7 +2,7 @@
 
 /* --------HERO SECTION------------------- */
 .hero_section {
-  background-image: url("../asset//vector.png");
+  background-image: url("../../../public//asset/vector.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

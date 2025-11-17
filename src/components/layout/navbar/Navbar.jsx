@@ -1,8 +1,9 @@
 import styles from "./Navbar.module.css";
 import Image from "next/image";
-import Logo from "../../asset/logo.png";
-import WalletConnect from "../../asset/walletconnect.png";
-import LoginButton from "../../asset/loginbutton.png";
+import Logo from "../../../../public/asset/logo.png";
+import WalletConnect from "../../../../public/asset/walletconnect.png";
+import LoginButton from "../../../../public/asset/loginbutton.png";
+import Link from "next/link";
 
 const NavBarComponent = () => {
     return (
@@ -18,9 +19,9 @@ const NavBarComponent = () => {
             <a href="#about" className={styles.navbar_link}>
               About
             </a>
-            <a href="#contact" className={styles.navbar_link}>
+            <Link href="/colorblindness" className={styles.navbar_link}>
               Color Blindness Info
-            </a>
+            </Link>
           </div>
 
           <div className={styles.auth_buttons}>
