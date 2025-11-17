@@ -1,9 +1,13 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import AppSidebar from '@/layout/app/sidebar';
 import AppTopnav from '@/layout/app/topnav';
+import { useWallet } from '@/contexts/WalletContext';
 
 export default function AppLayout({ children }) {
+  const router = useRouter();
+  const { isConnected } = useWallet();
   const [openMenu, setOpenMenu] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -17,6 +21,13 @@ export default function AppLayout({ children }) {
       setOpenMenu(isMobile ? false : savedMenuState === "true");
     }
   }, []);
+
+  useEffect(() => {
+    // Check wallet connection - redirect to landing if not connected
+    if (mounted && !isConnected) {
+      router.push('/');
+    }
+  }, [mounted, isConnected, router]);
 
   useEffect(() => {
     // Handle window resize - close sidebar on mobile when resizing
@@ -42,6 +53,11 @@ export default function AppLayout({ children }) {
         localStorage.setItem("menuOpen", newState ? "true" : "false");
       }
     }
+  }
+
+  // Don't render app content if not connected
+  if (!isConnected) {
+    return null;
   }
 
   return (

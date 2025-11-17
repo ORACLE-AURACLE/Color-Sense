@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import ColorInput from "./colorInput";
@@ -9,6 +9,7 @@ import LivePreview from "./livePreview";
 import AccessibilityControls from "./controls";
 import { getContrastRatio, getWCAGCompliance } from "@/lib/utils/contrast";
 import { validateHexColor } from "@/lib/utils/errorHandler";
+import { useToken } from "@/hooks/useToken";
 
 export default function AccessibilityChecker() {
   const [foregroundColor, setForegroundColor] = useState("#000000");
@@ -16,12 +17,47 @@ export default function AccessibilityChecker() {
   const [selectedVisionMode, setSelectedVisionMode] = useState("normal");
   const [contrastRatio, setContrastRatio] = useState(21);
   const [compliance, setCompliance] = useState(null);
+  const { earnTokens, updateStats, stats } = useToken();
+  const hasCheckedRef = useRef(false);
+  const lastColorsRef = useRef({ fg: "", bg: "" });
 
   useEffect(() => {
     const ratio = getContrastRatio(foregroundColor, backgroundColor);
     setContrastRatio(ratio);
-    setCompliance(getWCAGCompliance(ratio));
-  }, [foregroundColor, backgroundColor]);
+    const newCompliance = getWCAGCompliance(ratio);
+    setCompliance(newCompliance);
+
+    // Award tokens for contrast check
+    const colorsChanged = 
+      lastColorsRef.current.fg !== foregroundColor || 
+      lastColorsRef.current.bg !== backgroundColor;
+    
+    if (colorsChanged && (foregroundColor !== "#000000" || backgroundColor !== "#FFFFFF")) {
+      const isFirstCheck = !hasCheckedRef.current;
+      
+      // Update stats
+      updateStats({ contrastChecks: 1 });
+      
+      // Award tokens based on compliance
+      if (newCompliance) {
+        if (newCompliance.normal?.AAA) {
+          earnTokens('WCAG_AAA_COMPLIANCE', { compliance: newCompliance });
+        } else if (newCompliance.normal?.AA || newCompliance.large?.AA) {
+          earnTokens('WCAG_AA_COMPLIANCE', { compliance: newCompliance });
+        } else {
+          earnTokens('CONTRAST_CHECK', { compliance: newCompliance, isFirstTime: isFirstCheck });
+        }
+      } else {
+        earnTokens('CONTRAST_CHECK', { compliance: newCompliance, isFirstTime: isFirstCheck });
+      }
+
+      if (isFirstCheck) {
+        hasCheckedRef.current = true;
+      }
+
+      lastColorsRef.current = { fg: foregroundColor, bg: backgroundColor };
+    }
+  }, [foregroundColor, backgroundColor, earnTokens, updateStats]);
 
   const handleSwapColors = () => {
     const temp = foregroundColor;
@@ -64,6 +100,10 @@ export default function AccessibilityChecker() {
         description: "Contrast report has been downloaded.",
         duration: 3000,
       });
+
+      // Award tokens for saving report
+      updateStats({ reportsSaved: 1 });
+      earnTokens('SAVE_REPORT');
     } catch (error) {
       console.error("Error saving report:", error);
       toast.error("Failed to save report", {
@@ -86,6 +126,10 @@ export default function AccessibilityChecker() {
           description: "Report has been shared.",
           duration: 3000,
         });
+
+        // Award tokens for sharing report
+        updateStats({ imagesShared: 1 });
+        earnTokens('SHARE_REPORT');
       } else {
         await navigator.clipboard.writeText(
           `Contrast Ratio: ${contrastRatio.toFixed(2)}:1\nForeground: ${foregroundColor}\nBackground: ${backgroundColor}`
@@ -94,6 +138,10 @@ export default function AccessibilityChecker() {
           description: "Report has been copied to your clipboard.",
           duration: 3000,
         });
+
+        // Award tokens for sharing report (copying counts as sharing)
+        updateStats({ imagesShared: 1 });
+        earnTokens('SHARE_REPORT');
       }
     } catch (error) {
       // User cancelled sharing - don't show error
